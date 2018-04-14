@@ -7,6 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -26,6 +27,7 @@ public class Alchemist
     public static ItemLime itemLime;
     public static ItemLimeTool itemLimeTool;
     public static Material materialLime;
+    public static ItemLimeWand itemLimeWand;
 
     // 物品的初始化
     @EventHandler
@@ -41,6 +43,9 @@ public class Alchemist
         itemLimeTool = new ItemLimeTool();
         GameRegistry.registerItem(itemLimeTool);
 
+        itemLimeWand = new ItemLimeWand();
+        GameRegistry.registerItem(itemLimeWand);
+
         GameRegistry.addSmelting(blockLimestone, new ItemStack(itemLime), 100f);
         GameRegistry.addRecipe(
                 new ItemStack(itemLimeTool, 1),
@@ -53,6 +58,9 @@ public class Alchemist
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
+        MinecraftForge.EVENT_BUS.register(new SubscribeFall());
+        MinecraftForge.EVENT_BUS.register(new SubscribeChat());
+        MinecraftForge.EVENT_BUS.register(new SubscribeBoom());
     }
 
     @EventHandler
@@ -87,6 +95,11 @@ public class Alchemist
                     itemLimeTool,
                     0,
                     new ModelResourceLocation(MODID + ":" + itemLimeTool.NAME, "inventory")
+            );
+            ModelLoader.setCustomModelResourceLocation(
+                    itemLimeWand,
+                    0,
+                    new ModelResourceLocation(MODID + ":" + itemLimeWand.NAME, "inventory")
             );
         }
     }
