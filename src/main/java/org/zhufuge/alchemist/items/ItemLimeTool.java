@@ -1,8 +1,8 @@
 package org.zhufuge.alchemist.items;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemTool;
 import org.zhufuge.alchemist.Alchemist;
+import org.zhufuge.alchemist.creativetab.AlchemistTab;
 
 import java.util.HashSet;
 
@@ -20,8 +20,8 @@ public class ItemLimeTool extends ItemTool
         //设置最大耐久度,0的话即为永不损坏
         setMaxDamage(0);
 
-        setCreativeTab(CreativeTabs.tabTools);
         setUnlocalizedName(Alchemist.MODID + "." + NAME);
         setRegistryName(Alchemist.MODID, NAME);
+        setCreativeTab(AlchemistTab.alchemistTab);
     }
 }

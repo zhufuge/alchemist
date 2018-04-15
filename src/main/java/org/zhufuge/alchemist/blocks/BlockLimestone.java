@@ -1,8 +1,8 @@
 package org.zhufuge.alchemist.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import org.zhufuge.alchemist.Alchemist;
+import org.zhufuge.alchemist.creativetab.AlchemistTab;
 
 
 public class BlockLimestone extends Block
@@ -25,7 +25,7 @@ public class BlockLimestone extends Block
         // 设置踩在上面的脚步声
         setStepSound(soundTypeStone);
         // 设置创造模式
-        setCreativeTab(CreativeTabs.tabBlock);
+        setCreativeTab(AlchemistTab.alchemistTab);
         // 本地化名称
         setUnlocalizedName(Alchemist.MODID + "." + NAME);
         // 注册

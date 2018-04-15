@@ -21,7 +21,7 @@ import org.zhufuge.alchemist.proxy.ServerProxy;
 @Mod(modid="alchemist", name="alchemist", version="0.1.0")
 public class Alchemist
 {
-    @Mod.Instance(MODID)
+    @Mod.Instance("alchemist")
     public static Alchemist instance;
 
     @SidedProxy(

@@ -1,6 +1,5 @@
 package org.zhufuge.alchemist.items;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import org.zhufuge.alchemist.Alchemist;
+import org.zhufuge.alchemist.creativetab.AlchemistTab;
 
 
 public class ItemLimeWand extends Item
@@ -17,9 +17,9 @@ public class ItemLimeWand extends Item
     public ItemLimeWand()
     {
         super();
-        setCreativeTab(CreativeTabs.tabCombat);
         setUnlocalizedName(Alchemist.MODID + "." + NAME);
         setRegistryName(Alchemist.MODID, NAME);
+        setCreativeTab(AlchemistTab.alchemistTab);
     }
 
     @Override
