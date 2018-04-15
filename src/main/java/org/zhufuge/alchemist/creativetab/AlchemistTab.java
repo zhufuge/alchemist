@@ -11,11 +11,5 @@ public class AlchemistTab
         public Item getTabIconItem() {
             return Alchemist.itemLime;
         }
-
-        @Override
-        public boolean hasSearchBar()
-        {
-            return true;
-        }
     };
 }

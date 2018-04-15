@@ -2,9 +2,6 @@ package org.zhufuge.alchemist;
 
 
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -13,6 +10,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.zhufuge.alchemist.blocks.BlockLimestone;
+import org.zhufuge.alchemist.blocks.MaterialLime;
+import org.zhufuge.alchemist.crafting.Crafting;
+import org.zhufuge.alchemist.handler.EventRegister;
 import org.zhufuge.alchemist.items.ItemLime;
 import org.zhufuge.alchemist.items.ItemLimeTool;
 import org.zhufuge.alchemist.items.ItemLimeWand;
@@ -41,6 +41,8 @@ public class Alchemist
     @EventHandler
     public void preLoad(FMLPreInitializationEvent event)
     {
+        Config config = new Config(event);
+
         materialLime = new MaterialLime();
         blockLimestone = new BlockLimestone();
         itemLime = new ItemLime();
@@ -58,15 +60,8 @@ public class Alchemist
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
-        GameRegistry.addSmelting(blockLimestone, new ItemStack(itemLime), 100f);
-        GameRegistry.addRecipe(
-                new ItemStack(itemLimeTool, 1),
-                "###", "#X#", " X ", '#', itemLime, 'X', Items.stick
-        );
-
-        MinecraftForge.EVENT_BUS.register(new SubscribeFall());
-        MinecraftForge.EVENT_BUS.register(new SubscribeChat());
-        MinecraftForge.EVENT_BUS.register(new SubscribeBoom());
+        Crafting.register();
+        new EventRegister();
     }
 
     @EventHandler

@@ -1,4 +1,4 @@
-package org.zhufuge.alchemist;
+package org.zhufuge.alchemist.handler;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
