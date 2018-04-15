@@ -1,7 +1,8 @@
-package org.zhufuge.alchemist;
+package org.zhufuge.alchemist.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import org.zhufuge.alchemist.Alchemist;
 
 
 public class BlockLimestone extends Block

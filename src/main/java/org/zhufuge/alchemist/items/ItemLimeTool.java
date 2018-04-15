@@ -1,7 +1,8 @@
-package org.zhufuge.alchemist;
+package org.zhufuge.alchemist.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemTool;
+import org.zhufuge.alchemist.Alchemist;
 
 import java.util.HashSet;
 

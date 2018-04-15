@@ -1,4 +1,4 @@
-package org.zhufuge.alchemist;
+package org.zhufuge.alchemist.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import org.zhufuge.alchemist.Alchemist;
 
 
 public class ItemLimeWand extends Item

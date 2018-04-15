@@ -1,7 +1,8 @@
-package org.zhufuge.alchemist;
+package org.zhufuge.alchemist.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import org.zhufuge.alchemist.Alchemist;
 
 public class ItemLime extends Item
 {
@@ -15,6 +16,4 @@ public class ItemLime extends Item
         setUnlocalizedName(Alchemist.MODID + "." + NAME);
         setRegistryName(Alchemist.MODID, NAME);
     }
-
-
 }
