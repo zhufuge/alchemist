@@ -1,18 +1,22 @@
 package org.zhufuge.alchemist.blocks;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockOre;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import org.zhufuge.alchemist.Alchemist;
 import org.zhufuge.alchemist.creativetab.AlchemistTab;
 
+import java.util.Random;
 
-public class BlockLimestone extends Block
+
+public class BlockLimeOre extends BlockOre
 {
-    public static final String NAME = "limestone";
+    public static final String NAME = "limeOre";
 
 
-    public BlockLimestone()
+    public BlockLimeOre()
     {
-        super(Alchemist.materialLime);
+        super();
 
         // 设置硬度
         setHardness(1.5f);
@@ -30,5 +34,11 @@ public class BlockLimestone extends Block
         setUnlocalizedName(Alchemist.MODID + "." + NAME);
         // 注册
         setRegistryName(Alchemist.MODID, NAME);
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Alchemist.itemLimestone;
     }
 }

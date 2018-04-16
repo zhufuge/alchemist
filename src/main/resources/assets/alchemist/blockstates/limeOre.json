@@ -1,7 +1,7 @@
 {
   "variants": {
     "normal": {
-      "model": "alchemist:limestone"
+      "model": "alchemist:limeOre"
     }
   }
 }

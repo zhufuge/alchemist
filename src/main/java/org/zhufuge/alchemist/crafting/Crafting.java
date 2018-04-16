@@ -11,23 +11,13 @@ public class Crafting
 {
     public static void register()
     {
-        GameRegistry.addRecipe(
-                new ItemStack(Alchemist.itemLimeTool, 1),
-                "#", "X", "X", '#', Alchemist.itemLime, 'X', Items.stick
-        );
+        // GameRegistry.addRecipe(new ItemStack(Alchemist.blockLimeOre, 1), "##", "##", '#', Alchemist.itemLime);
 
-        GameRegistry.addRecipe(
-                new ItemStack(Alchemist.blockLimestone, 1),
-                "##", "##", '#', Alchemist.itemLime
-        );
-
-        GameRegistry.addSmelting(Alchemist.blockLimestone, new ItemStack(Alchemist.itemLime), 100f);
+        GameRegistry.addSmelting(Alchemist.itemLimestone, new ItemStack(Alchemist.itemLime), 100f);
 
         GameRegistry.registerFuelHandler(new IFuelHandler() {
             @Override
-            public int getBurnTime(ItemStack fuel) {
-                return Alchemist.itemLime != fuel.getItem() ? 0 : Config.limeBurnTime;
-            }
+            public int getBurnTime(ItemStack fuel) { return Alchemist.itemLime != fuel.getItem() ? 0 : Config.limeBurnTime; }
         });
     }
 }

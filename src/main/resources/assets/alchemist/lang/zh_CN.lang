@@ -1,2 +1,4 @@
-tile.alchemist.limestone.name=石灰岩
+tile.alchemist.limeOre.name=石灰岩
+item.alchemist.limestone.name=石灰石
 item.alchemist.lime.name=石灰
+itemGroup.alchemist=炼金术师

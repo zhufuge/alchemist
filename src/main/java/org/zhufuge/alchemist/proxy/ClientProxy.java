@@ -13,10 +13,9 @@ public class ClientProxy extends ServerProxy
     {
         super.loadModel();
 
-        setCMRLocation(Alchemist.blockLimestone);
+        setCMRLocation(Alchemist.blockLimeOre);
+        setCMRLocation(Alchemist.itemLimestone);
         setCMRLocation(Alchemist.itemLime);
-        setCMRLocation(Alchemist.itemLimeTool);
-        setCMRLocation(Alchemist.itemLimeWand);
     }
 
     public void setCMRLocation(Block block)

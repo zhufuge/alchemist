@@ -1,27 +1,36 @@
 package org.zhufuge.alchemist.handler;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.EventBus;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import org.zhufuge.alchemist.Alchemist;
+import org.zhufuge.alchemist.entity.EntityGoldenChicken;
 
 import java.util.Iterator;
 import java.util.List;
 
 public class EventRegister
 {
+    public static final EventBus EVENT_BUS = new EventBus();
+
     public EventRegister()
     {
         MinecraftForge.EVENT_BUS.register(this);
+        EVENT_BUS.register(this);
     }
 
     // 订阅 Boom 事件，在事件发生时输出 “Booom!!!"
@@ -71,7 +80,7 @@ public class EventRegister
     }
 
     // 测试事件优先级别，订阅落地事件，在落地时触发，输出掉落高度，并取消该事件的发生
-    @SubscribeEvent(priority = EventPriority.HIGH)
+    // @SubscribeEvent(priority = EventPriority.HIGH)
     public void test(LivingFallEvent event)
     {
         if (event.entityLiving instanceof EntityPlayerMP) {
@@ -83,39 +92,15 @@ public class EventRegister
         }
     }
 
-    // 测试事件恢复，恢复事件，并触发玩家着火
-    @SubscribeEvent(priority = EventPriority.LOW, receiveCanceled = true)
+    // 测试事件恢复，恢复事件
+    // @SubscribeEvent(priority = EventPriority.LOW, receiveCanceled = true)
     public void low(LivingFallEvent event)
     {
         if (event.entityLiving instanceof EntityPlayerMP) {
             EntityPlayer entityPlayer = (EntityPlayer) event.entityLiving;
             entityPlayer.addChatMessage(new ChatComponentText("But now fell " + event.distance));
-            entityPlayer.setFire(1);
+            // entityPlayer.setFire(1);
             event.setCanceled(false);
-        }
-    }
-
-
-    // 捡起物品时输出信息
-    @SubscribeEvent
-    public void onPlayerItemPickup(PlayerEvent.ItemPickupEvent event)
-    {
-        EntityPlayer player = event.player;
-        if (player.isServerWorld())
-        {
-            String info = String.format("%s picks up: %s", player.getName(), event.pickedUp.getEntityItem());
-            player.addChatMessage(new ChatComponentText(info));
-        }
-    }
-
-    // 玩家与其他物品互动时输出信息
-    @SubscribeEvent
-    public void onPlayerInteract(PlayerInteractEvent event)
-    {
-        if (!event.world.isRemote)
-        {
-            String info = String.format("%s interacts with: %s", event.entityPlayer.getName(), event.pos);
-            event.entityPlayer.addChatMessage(new ChatComponentText(info));
         }
     }
 }
